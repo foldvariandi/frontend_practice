@@ -25,6 +25,7 @@ main {
     width: 900px;
     /* ha csak kettő értéket kap a margin vagy a padding, akkor  */
     /* az első érték alul-fölül, a második jobbra-balra  */
+    /*a margin 0 auto, fix és adott szélesség esetén középre igazítja az adott elemet */
     margin: 0 auto;
 }
 footer {
@@ -37,11 +38,13 @@ footer {
 
 h1 {
     font-size: 40px;
+    /* szöveg középre igazítása: */
+    text-align: center;
 }
 
 .main-menu-container {
     background: linear-gradient(to right, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
-    /* ez is kell ahhoz hogy a main-menu kozepen legyen */
+    /* inline elemek esetében, a text-align: center igazít középre */
     text-align: center;
     margin-bottom: 40px;
 }
@@ -49,11 +52,62 @@ h1 {
 .main-menu {
     list-style: none;
     padding: 0;
-    margin: 0 auto;
+   
 }
 .main-menu-item {
+    /* itt állítjuk át a list item típusát blokk szintűről inline-ra: */
     display: inline-block;
+    /* ha 2 paraméter van, akkor az első paraméter alul-fölül, a másik jobbra-balra */
+    font-size: 17px;
     padding: 20px 10px;
     background-color: blue;
     color: white;
+    /*azért hogy a submenu-t a főmenüpontokhoz képest tudjuk igazítani, az összes főmenüpont: position relative */
+    position: relative;
+    /* animáció hozzáadása: */
+    transition: background-color .5s ease-in-out;
+}
+
+.main-menu-item:hover, .submenu-item:hover {
+    background-color: red;
+}
+.main-menu-item:hover > .submenu {
+    /* a submenu akkor jelenik meg ha a main-menu-item-re hoverezünk */
+    visibility: visible;
+    opacity: 1;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* a submenu pozicióját a document flow-tol függetlenül állítjuk, ezért kell a position absolute */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    /* alap esetben a submenu nem látszik */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+
+}
+.submenu-item {
+    padding: 20px 10px;
+    background-color: blue;
+    transition: background-color .5s ease-in-out;
+}
+
+
+
+.gombos-menu {
+    display:none;
+    
+}
+.menu-checkbox-input {
+    display: none;
+}
+/* adjacent sibling selector */
+/* az input után, vele egy szinten, valahol utána, egy elem aminek az class-a .gombos-menu */
+.menu-checkbox-input:checked ~ .gombos-menu {
+    display: block;
 }
