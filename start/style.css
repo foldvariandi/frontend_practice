@@ -1,0 +1,19 @@
+/*csslint fallback-colors: false, order-alphabetical: false, box-model: false*/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.header-container {
+  /* 100% lesz a szélessége: */
+  background-size: 100%;
+  position: relative;
+  /* ennek az elemnek a magassága a böngésző szélességének 40%-a (verticalWidth) */
+  height: 30vw;
+}
+header {
+  width: 70%;
+  font-weight: 300;
+}
