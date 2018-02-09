@@ -29,7 +29,6 @@ body {
     right: 10vw;
     top: 50px;
     padding: 20px;
-    width: 50%;
 }
 header {
   width: 70%;
@@ -41,9 +40,7 @@ header {
 }
 
 .main-container {
-    width: 70%;
-    //padding-left: 50px;
-    //padding-right: 300px;
+    width: 45%;
     margin: auto;
 }
 
